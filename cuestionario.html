@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario Informático</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .fireworks {
+            display: none;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: url('fireworks.gif') no-repeat center center;
+            background-size: cover;
+        }
+        .sad-face {
+            display: none;
+            font-size: 24px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cuestionario Informático</h1>
+    <form id="quizForm">
+        <div class="question" id="question1">
+            <p>1. ¿Qué es un sistema operativo?</p>
+            <label><input type="radio" name="q1" value="a"> Un software que controla el hardware de la computadora</label><br>
+            <label><input type="radio" name="q1" value="b"> Un dispositivo de almacenamiento</label><br>
+            <label><input type="radio" name="q1" value="c"> Un programa de edición de fotos</label>
+            <div class="result"></div>
+            <div class="fireworks"></div>
+            <div class="sad-face">😢</div>
+        </div>
+        <div class="question" id="question2">
+            <p>2. ¿Cuál es una unidad de medida de almacenamiento?</p>
+            <label><input type="radio" name="q2" value="a"> Byte</label><br>
+            <label><input type="radio" name="q2" value="b"> Pixel</label><br>
+            <label><input type="radio" name="q2" value="c"> Hertz</label>
+            <div class="result"></div>
+            <div class="fireworks"></div>
+            <div class="sad-face">😢</div>
+        </div>
+        <div class="question" id="question3">
+            <p>3. ¿Qué tipo de software es Microsoft Word?</p>
+            <label><input type="radio" name="q3" value="a"> Sistema operativo</label><br>
+            <label><input type="radio" name="q3" value="b"> Procesador de texto</label><br>
+            <label><input type="radio" name="q3" value="c"> Navegador web</label>
+            <div class="result"></div>
+            <div class="fireworks"></div>
+            <div class="sad-face">😢</div>
+        </div>
+        <div class="question" id="question4">
+            <p>4. ¿Qué componente es el cerebro de la computadora?</p>
+            <label><input type="radio" name="q4" value="a"> Monitor</label><br>
+            <label><input type="radio" name="q4" value="b"> CPU</label><br>
+            <label><input type="radio" name="q4" value="c"> Teclado</label>
+            <div class="result"></div>
+            <div class="fireworks"></div>
+            <div class="sad-face">😢</div>
+        </div>
+        <div class="question" id="question5">
+            <p>5. ¿Qué tipo de dispositivo es un mouse?</p>
+            <label><input type="radio" name="q5" value="a"> Dispositivo de entrada</label><br>
+            <label><input type="radio" name="q5" value="b"> Dispositivo de salida</label><br>
+            <label><input type="radio" name="q5" value="c"> Dispositivo de almacenamiento</label>
+            <div class="result"></div>
+            <div class="fireworks"></div>
+            <div class="sad-face">😢</div>
+        </div>
+    </form>
+
+    <script>
+        const correctAnswers = {
+            q1: 'a',
+            q2: 'a',
+            q3: 'b',
+            q4: 'b',
+            q5: 'a'
+        };
+
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', (event) => {
+                const questionDiv = event.target.closest('.question');
+                const questionName = event.target.name;
+                const selectedAnswer = event.target.value;
+                const resultDiv = questionDiv.querySelector('.result');
+                const fireworksDiv = questionDiv.querySelector('.fireworks');
+                const sadFaceDiv = questionDiv.querySelector('.sad-face');
+
+                if (selectedAnswer === correctAnswers[questionName]) {
+                    resultDiv.textContent = "¡Correcto!";
+                    fireworksDiv.style.display = "block";
+                    sadFaceDiv.style.display = "none";
+                    setTimeout(() => fireworksDiv.style.display = "none", 3000);
+                } else {
+                    resultDiv.textContent = "Incorrecto";
+                    sadFaceDiv.style.display = "block";
+                    fireworksDiv.style.display = "none";
+                    setTimeout(() => sadFaceDiv.style.display = "none", 3000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

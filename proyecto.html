@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto Comunitario Interdisciplinario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-y: hidden;
+        }
+
+        section {
+            height: 100vh;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+            color: white;
+        }
+
+        section:nth-child(even) {
+            background: linear-gradient(120deg, #283048, #859398);
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        p, li {
+            font-size: 1.3em;
+            line-height: 1.6;
+            max-width: 900px;
+        }
+
+        ul {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        .highlight {
+            color: #ffd369;
+            font-weight: bold;
+        }
+
+        nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+
+        nav a {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: white;
+            background: rgba(0,0,0,0.4);
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#origen">Origen</a>
+    <a href="#evolucion">Evolución</a>
+    <a href="#talleres">Talleres</a>
+    <a href="#nem">NEM</a>
+    <a href="#cierre">Cierre</a>
+    <a href="INDEX.HTML">Volver a la pagina principal</a>
+</nav>
+
+<section id="inicio">
+    <h1>Proyecto Comunitario Interdisciplinario</h1>
+    <p>
+        Una iniciativa escolar que integra tecnología, aprendizaje significativo
+        y trabajo colaborativo para fortalecer la formación técnica y comunitaria.
+    </p>
+</section>
+
+<section id="origen">
+    <h2>Origen del Proyecto</h2>
+    <p>
+        El proyecto nació hace tres años en el
+        <span class="highlight">taller de Informática</span>,
+        como una página web educativa para apoyar el aprendizaje práctico.
+    </p>
+</section>
+
+<section id="evolucion">
+    <h2>Evolución y Crecimiento</h2>
+    <p>
+        Con el tiempo, evolucionó hacia una
+        <span class="highlight">plataforma comunitaria interdisciplinaria</span>,
+        donde se muestran evidencias reales de aprendizaje.
+    </p>
+</section>
+
+<section id="talleres">
+    <h2>Participación de los Talleres</h2>
+    <ul>
+        <li><span class="highlight">Informática:</span> desarrollo del sitio web.</li>
+        <li><span class="highlight">Ofimática:</span> documentación y contenidos.</li>
+        <li><span class="highlight">Administración Contable:</span> costos y proyectos.</li>
+        <li><span class="highlight">Industria Textil:</span> diseño de productos.</li>
+        <li><span class="highlight">Electrónica:</span> prototipos funcionales.</li>
+        <li><span class="highlight">Carpintería:</span> diseño y fabricación.</li>
+    </ul>
+</section>
+
+<section id="nem">
+    <h2>Nueva Escuela Mexicana</h2>
+    <p>
+        El proyecto promueve inclusión, aprendizaje situado,
+        trabajo colaborativo y el uso ético y social de la tecnología.
+    </p>
+</section>
+
+<section id="cierre">
+    <h2>Mensaje Final</h2>
+    <p>
+        Cuando la tecnología se pone al servicio del aprendizaje,
+        la escuela técnica se convierte en un espacio de
+        <span class="highlight">innovación y futuro</span>.
+    </p>
+</section>
+
+<script>
+    const sections = document.querySelectorAll("section");
+    let index = 0;
+    let interval;
+
+    function goToSection(i) {
+        sections[i].scrollIntoView({ behavior: "smooth" });
+    }
+
+    function startAutoSlide() {
+        interval = setInterval(() => {
+            index = (index + 1) % sections.length;
+            goToSection(index);
+        }, 8000); // 8 segundos
+    }
+
+    function resetAutoSlide() {
+        clearInterval(interval);
+        startAutoSlide();
+    }
+
+
+    startAutoSlide();
+
+       document.addEventListener("wheel", resetAutoSlide);
+    document.addEventListener("click", resetAutoSlide);
+    document.addEventListener("keydown", resetAutoSlide);
+</script>
+
+</body>
+</html>
+
+Código HTML FINAL (reemplaza tu index.html)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto Comunitario Interdisciplinario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            overflow-y: hidden;
+        }
+
+        section {
+            height: 100vh;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+            color: white;
+        }
+
+        section:nth-child(even) {
+            background: linear-gradient(120deg, #283048, #859398);
+        }
+
+        h1 { font-size: 3em; margin-bottom: 20px; }
+        h2 { font-size: 2.2em; margin-bottom: 20px; }
+
+        p, li {
+            font-size: 1.3em;
+            line-height: 1.6;
+            max-width: 900px;
+        }
+
+        ul { margin-top: 20px; padding-left: 20px; }
+
+        .highlight {
+            color: #ffd369;
+            font-weight: bold;
+        }
+
+        /* BOTÓN MODO */
+        .control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            z-index: 10;
+        }
+
+        /* INDICADOR */
+        .dots {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: #ffd369;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="control" id="toggle">⏸ Modo manual</div>
+
+<div class="dots" id="dots"></div>
+
+<section>
+    <h1>Proyecto Comunitario Interdisciplinario</h1>
+    <p>
+        Una iniciativa escolar que integra tecnología, aprendizaje significativo
+        y trabajo colaborativo para fortalecer la formación técnica.
+    </p>
+</section>
+
+<section>
+    <h2>Origen del Proyecto</h2>
+    <p>
+        El proyecto nació hace tres años en el
+        <span class="highlight">taller de Informática</span>,
+        como una página web educativa para apoyar el aprendizaje práctico.
+    </p>
+</section>
+
+<section>
+    <h2>Evolución</h2>
+    <p>
+        Con el tiempo, evolucionó hacia una
+        <span class="highlight">plataforma comunitaria interdisciplinaria</span>,
+        donde los estudiantes muestran evidencias reales de su aprendizaje.
+    </p>
+</section>
+
+<section>
+    <h2>Participación de los Talleres</h2>
+    <ul>
+        <li><span class="highlight">Informática:</span> sitio web.</li>
+        <li><span class="highlight">Ofimática:</span> documentación.</li>
+        <li><span class="highlight">Administración Contable:</span> costos.</li>
+        <li><span class="highlight">Industria Textil:</span> productos.</li>
+        <li><span class="highlight">Electrónica:</span> prototipos.</li>
+        <li><span class="highlight">Carpintería:</span> fabricación.</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Nueva Escuela Mexicana</h2>
+    <p>
+        Promueve inclusión, aprendizaje situado, trabajo colaborativo
+        y uso ético y social de la tecnología.
+    </p>
+</section>
+
+<section>
+    <h2>Mensaje Final</h2>
+    <p>
+        Cuando la tecnología se pone al servicio del aprendizaje,
+        la escuela técnica se convierte en un espacio de
+        <span class="highlight">innovación y futuro</span>.
+    </p>
+</section>
+
+<script>
+    const sections = document.querySelectorAll("section");
+    const dotsContainer = document.getElementById("dots");
+    const toggleBtn = document.getElementById("toggle");
+
+    let index = 0;
+    let auto = true;
+    let interval;
+
+    // Crear puntos
+    sections.forEach((_, i) => {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        dot.onclick = () => goTo(i, true);
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll(".dot");
+
+    function updateDots() {
+        dots.forEach(d => d.classList.remove("active"));
+        dots[index].classList.add("active");
+    }
+
+    function goTo(i, manual = false) {
+        index = i;
+        sections[i].scrollIntoView({ behavior: "smooth" });
+        updateDots();
+        if (manual) pause();
+    }
+
+    function start() {
+        interval = setInterval(() => {
+            index = (index + 1) % sections.length;
+            goTo(index);
+        }, 8000);
+    }
+
+    function pause() {
+        clearInterval(interval);
+        auto = false;
+        toggleBtn.textContent = "▶️ Modo automático";
+    }
+
+    function resume() {
+        auto = true;
+        toggleBtn.textContent = "⏸ Modo manual";
+        start();
+    }
+
+    toggleBtn.onclick = () => auto ? pause() : resume();
+
+    document.addEventListener("wheel", pause);
+    document.addEventListener("keydown", pause);
+    document.addEventListener("click", pause);
+
+    updateDots();
+    start();
+</script>
+
+</body>
+</html>

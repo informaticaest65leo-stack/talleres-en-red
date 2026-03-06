@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Venado</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #1A237E; /* Azul más oscuro */
+            margin: 0;
+        }
+        canvas {
+            border: 2px solid #fff;
+            background-color: #1E3A8A;
+        }
+        #game-over, #knowledge, #success {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: yellow;
+            font-size: 2em;
+        }
+        #score {
+            color: white;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="score">Puntuación: 0</div>
+    <div id="game-over">¡Juego Terminado!</div>
+    <div id="knowledge">¡Conocimiento!</div>
+    <div id="success">¡Éxito!</div>
+    <canvas id="gameCanvas" width="1000" height="700"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreDisplay = document.getElementById('score');
+        const knowledgeDisplay = document.getElementById('knowledge');
+        const successDisplay = document.getElementById('success');
+        let score = 0;
+        const tileSize = 50;
+
+        const deerImage = new Image();
+        deerImage.src = 'deer.png'; // Asegúrate de tener esta imagen en el mismo directorio
+
+        const deer = {
+            x: tileSize,
+            y: tileSize,
+            dx: tileSize,
+            dy: 0,
+            size: tileSize * 1.5
+        };
+
+        const pacmanBall = {
+            x: tileSize * 8,
+            y: tileSize * 8,
+            radius: tileSize * 0.45, // Bolita 10% más pequeña
+            color: 'yellow'
+        };
+
+        function drawDeer() {
+            ctx.drawImage(deerImage, deer.x, deer.y, deer.size, deer.size);
+        }
+
+        function drawPacmanBall() {
+            ctx.beginPath();
+            ctx.arc(pacmanBall.x, pacmanBall.y, pacmanBall.radius, 0, 2 * Math.PI);
+            ctx.fillStyle = pacmanBall.color;
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function updateDeerPosition() {
+            deer.x += deer.dx;
+            deer.y += deer.dy;
+        }
+
+        function checkCollision() {
+            if (deer.x < 0 || deer.x > canvas.width - deer.size || deer.y < 0 || deer.y > canvas.height - deer.size) {
+                gameOver();
+            }
+        }
+
+        function gameOver() {
+            document.getElementById('game-over').style.display = 'block';
+            clearInterval(gameLoop);
+        }
+
+        function showText(message) {
+            if (message === "Conocimiento") {
+                knowledgeDisplay.style.display = 'block';
+                setTimeout(() => knowledgeDisplay.style.display = 'none', 2000);
+            } else if (message === "Éxito") {
+                successDisplay.style.display = 'block';
+                setTimeout(() => successDisplay.style.display = 'none', 2000);
+            }
+        }
+
+        function explode() {
+            const explosionSound = new Audio('explosion.mp3'); // Añade un archivo de sonido de explosión en el directorio
+            explosionSound.play();
+            ctx.fillStyle = 'orange';
+            ctx.beginPath();
+            ctx.arc(pacmanBall.x, pacmanBall.y, pacmanBall.radius * 2, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function eatPacmanBall() {
+            if (deer.x < pacmanBall.x + pacmanBall.radius && deer.x + deer.size > pacmanBall.x - pacmanBall.radius &&
+                deer.y < pacmanBall.y + pacmanBall.radius && deer.y + deer.size > pacmanBall.y - pacmanBall.radius) {
+                explode();
+                setTimeout(() => {
+                    showText(Math.random() > 0.5 ? "Conocimiento" : "Éxito");
+                    pacmanBall.x = Math.floor(Math.random() * (canvas.width / tileSize)) * tileSize;
+                    pacmanBall.y = Math.floor(Math.random() * (canvas.height / tileSize)) * tileSize;
+                    score++;
+                    scoreDisplay.textContent = `Puntuación: ${score}`;
+                }, 500);
+            }
+        }
+
+        function game() {
+            clearCanvas();
+            drawPacmanBall();
+            drawDeer();
+            updateDeerPosition();
+            checkCollision();
+            eatPacmanBall();
+        }
+
+        document.addEventListener('keydown', (event) => {
+            switch (event.key) {
+                case 'ArrowUp':
+                    deer.dx = 0;
+                    deer.dy = -tileSize / 2;
+                    break;
+                case 'ArrowDown':
+                    deer.dx = 0;
+                    deer.dy = tileSize / 2;
+                    break;
+                case 'ArrowLeft':
+                    deer.dx = -tileSize / 2;
+                    deer.dy = 0;
+                    break;
+                case 'ArrowRight':
+                    deer.dx = tileSize / 2;
+                    deer.dy = 0;
+                    break;
+            }
+        });
+
+        const gameLoop = setInterval(game, 200);
+    </script>
+</body>
+<p><Font size=6>
+<A HREF="informatica.html">Pagina principal</A>
+</html>
